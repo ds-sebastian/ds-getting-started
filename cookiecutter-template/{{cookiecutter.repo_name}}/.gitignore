@@ -1,9 +1,9 @@
-# Ignore everything in the data directory
-data/*
-# But not the data directory itself, nor the .gitkeep files
-!data/
+# Ignore everything in the data subdirectories
+data/**/*
+
+# Exclude .gitkeep files from being ignored
 !data/**/.gitkeep
-!data/external/.gitkeep
+
 # Mac OS-specific storage files
 .DS_Store
 
