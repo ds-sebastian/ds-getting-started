@@ -1,4 +1,4 @@
-name: project_name
+name: {{cookiecutter.repo_name}}
 dependencies:
   - python={{cookiecutter.python_version}}
   - black
