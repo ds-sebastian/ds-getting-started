@@ -3,7 +3,7 @@ data/*
 # But not the data directory itself, nor the .gitkeep files
 !data/
 !data/**/.gitkeep
-
+!data/external/.gitkeep
 # Mac OS-specific storage files
 .DS_Store
 
