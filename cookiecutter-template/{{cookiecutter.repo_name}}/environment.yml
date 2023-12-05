@@ -1,0 +1,22 @@
+name: project_name
+dependencies:
+  - python
+  - black
+  - mypy
+  - flake8
+  - isort
+  - pip
+  - setuptools
+  - wheel
+  - typer
+  - loguru
+  - ipython
+  - jupyter
+  - matplotlib
+  - numpy
+  - pandas
+  - scikit-learn
+  - pip:
+    - python-dotenv
+    - awscli
+    - -e .
