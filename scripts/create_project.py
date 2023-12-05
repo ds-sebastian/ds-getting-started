@@ -1,28 +1,38 @@
+import json
 import os
+import pathlib
+import shutil
 import subprocess
 
-
-def create_project_with_cookiecutter(template_path, project_name):
-    subprocess.run(
-        [
-            "cookiecutter",
-            template_path,
-            "--no-input",
-            "project_name={}".format(project_name),
-        ],
-        check=True,
-    )
+config_file_path = pathlib.Path(__file__).parent.resolve() / "config.json"
 
 
-def setup_conda_environment(project_name, python_version):
-    env_name = project_name.replace(" ", "_")
-    subprocess.run(
-        ["conda", "create", "--name", env_name, f"python={python_version}", "-y"],
-        check=True,
-    )
-    print(
-        f"Conda environment '{env_name}' created. To activate, use: conda activate {env_name}"
-    )
+def install_dependencies():
+    # Check if pipx is installed
+    if not shutil.which("pipx"):
+        subprocess.run(["pip", "install", "pipx"], check=True)
+
+    # Check if cookiecutter is installed via pipx
+    if not shutil.which("cookiecutter"):
+        subprocess.run(["pipx", "install", "cookiecutter"], check=True)
+
+
+def get_or_set_default_repo_folder():
+    if config_file_path.exists():
+        with open(config_file_path, "r") as config_file:
+            config = json.load(config_file)
+            return config.get("default_repo_folder")
+
+    default_repo_folder = input("Enter the path for the default projects folder: ")
+    with open(config_file_path, "w") as config_file:
+        json.dump({"default_repo_folder": default_repo_folder}, config_file)
+
+    return default_repo_folder
+
+
+def create_project_with_cookiecutter(template_path, default_repo_folder):
+    os.chdir(default_repo_folder)
+    subprocess.run(["cookiecutter", template_path], check=True)
 
 
 def initialize_git(project_path):
@@ -41,16 +51,16 @@ def setup_mlflow(project_path):
 
 
 def main():
+    install_dependencies()
+    default_repo_folder = get_or_set_default_repo_folder()
     template_path = input("Enter the cookiecutter template path (local or git URL): ")
-    project_name = input("Enter your project name: ")
-    python_version = input(
-        "Enter the Python version for the Conda environment (e.g., 3.8): "
-    )
 
-    create_project_with_cookiecutter(template_path, project_name)
-    project_path = os.path.join(os.getcwd(), project_name)
+    create_project_with_cookiecutter(template_path, default_repo_folder)
 
-    setup_conda_environment(project_name, python_version)
+    # Assume the project name is the name of the created directory
+    project_name = input("Enter the name of the created project: ")
+    project_path = os.path.join(default_repo_folder, project_name)
+
     initialize_git(project_path)
     setup_mlflow(project_path)
 

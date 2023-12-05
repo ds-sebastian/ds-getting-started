@@ -1,10 +1,8 @@
 name: {{cookiecutter.repo_name}}
 dependencies:
   - python={{cookiecutter.python_version}}
-  - black
+  - ruff
   - mypy
-  - flake8
-  - isort
   - pip
   - setuptools
   - wheel
@@ -13,9 +11,11 @@ dependencies:
   - ipython
   - jupyter
   - matplotlib
+  - seaborn
   - numpy
   - pandas
   - scikit-learn
+  - mlflow
   - pip:
     - python-dotenv
     - awscli

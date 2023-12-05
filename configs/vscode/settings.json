@@ -1,0 +1,39 @@
+{
+    "editor.inlineSuggest.enabled": true,
+    "workbench.startupEditor": "none",
+    "[python]": {
+        "editor.formatOnSave": true,
+        "editor.codeActionsOnSave": {
+            "source.fixAll": true,
+            "source.organizeImports": true
+        },
+        "editor.defaultFormatter": "charliermarsh.ruff"
+    },
+
+    "git.autofetch": true,
+    "git.confirmSync": false,
+    "git.allowForcePush": true,
+
+    "explorer.confirmDragAndDrop": false,
+
+    "remote.SSH.configFile": "~/.ssh/config",
+
+    "security.workspace.trust.untrustedFiles": "open",
+    "security.workspace.trust.enabled": false,
+
+    "terminal.integrated.fontFamily": "'CaskaydiaCove NFM', monospace",
+    "terminal.integrated.fontSize": 16,
+
+    "jupyter.askForKernelRestart": false,
+
+    "notebook.output.textLineLimit": 100,
+    "notebook.formatOnSave.enabled": true,
+    "notebook.codeActionsOnSave": {
+        "source.fixAll": true,
+        "source.organizeImports": true
+    },
+    
+    "win-ca.inject": "append"
+
+
+}
