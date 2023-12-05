@@ -15,7 +15,6 @@ dependencies:
   - numpy
   - pandas
   - scikit-learn
-  - mlflow
   - pip:
     - python-dotenv
     - awscli

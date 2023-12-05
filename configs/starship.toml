@@ -1,0 +1,226 @@
+# Starship configuration file
+
+# General settings
+format = """
+[](#9A348E)\
+$os\
+$username\
+[](bg:#DA627D fg:#9A348E)\
+$directory\
+[](fg:#DA627D bg:#FCA17D)\
+$git_branch\
+$git_status\
+[](fg:#FCA17D bg:#86BBD8)\
+$c\
+$python\
+$rlang\
+$julia\
+$rust\
+[](fg:#86BBD8 bg:#06969A)\
+$docker_context\
+$conda\
+$azure\
+$aws\
+$kubernetes\
+$container\
+[](fg:#06969A bg:#33658A)\
+$time\
+[ ](fg:#33658A)\
+"""
+
+# Disable the blank line at the start of the prompt
+# add_newline = false
+
+# You can also replace your username with a neat symbol like   or disable this
+# and use the os module below
+[username]
+show_always = false
+style_user = "bg:#9A348E"
+style_root = "bg:#9A348E"
+format = '[$user ]($style)'
+disabled = false
+
+# Prompt character settings
+[character]
+success_symbol = "[➜](bold green)"
+error_symbol = "[➜](bold red)"
+vicmd_symbol = "[➜](bold yellow)"
+
+# An alternative to the username module which displays a symbol that
+# represents the current operating system
+[os]
+style = "bg:#9A348E"
+disabled = false # Disabled by default
+
+# Directory settings
+[directory]
+style = "bg:#DA627D"
+format = "[ $path ]($style)"
+truncation_length = 3
+truncation_symbol = "…/"
+
+# Here is how you can shorten some long paths by text replacement
+# similar to mapped_locations in Oh My Posh:
+[directory.substitutions]
+"Documents" = "󰈙 "
+"Downloads" = " "
+"Music" = " "
+"Pictures" = " "
+# Keep in mind that the order matters. For example:
+# "Important Documents" = " 󰈙 "
+# will not be replaced, because "Documents" was already substituted before.
+# So either put "Important Documents" before "Documents" or use the substituted version:
+# "Important 󰈙 " = " 󰈙 "
+
+# Git settings
+[git_branch]
+symbol = ""
+style = "bg:#FCA17D"
+format = '[ $symbol $branch ]($style)'
+
+[git_status]
+conflicted = "≠"
+ahead = "⇡"
+behind = "⇣"
+diverged = "⇕"
+stashed = "✭"
+modified = "Δ"
+staged = "⌗"
+renamed = "⇉"
+untracked = "✶"
+deleted = "✖"
+style = "bg:#FCA17D"
+format = '[$all_status$ahead_behind ]($style)'
+
+[git_commit]
+tag_disabled = true
+style = "bg:#FCA17D"
+
+# Python settings
+[python]
+symbol = ""
+style = "bg:#86BBD8"
+format = '[ $symbol ($version) ]($style)'
+
+# Conda settings
+[conda]
+symbol = " "
+style = "bg:#06969A"
+format = '[$symbol$environment]($style)'
+
+# R settings
+[rlang]
+symbol = "󰟔 "
+style = "bg:#86BBD8"
+format = '[ $symbol ($version) ]($style)'
+
+# Julia settings
+[julia]
+symbol = " "
+style = "bg:#86BBD8"
+format = '[ $symbol ($version) ]($style)'
+
+# Rust settings
+[rust]
+symbol = " "
+style = "bg:#86BBD8"
+format = '[ $symbol ($version) ]($style)'
+
+# Docker settings
+[docker_context]
+symbol = " "
+style = "bg:#06969A"
+format = '[ $symbol $context ]($style) $path'
+
+[kubernetes]
+disabled = false
+detect_files = ['k8s']
+style = "bg:#06969A"
+format = '[ $symbol $context ]($style) $path'
+
+[container]
+style = "bg:#06969A"
+format = '[ $symbol $context ]($style) $path'
+
+# AWS settings
+[aws]
+format = '[$symbol($profile )(\($region\) )]($style)'
+style = 'bold blue'
+symbol = " "
+[aws.region_aliases]
+ap-southeast-2 = 'au'
+us-east-1 = 'va'
+style = "bg:#06969A"
+
+
+# Azure settings
+[azure]
+disabled = false
+format = '[$symbol($subscription)]($style) '
+symbol = '󰠅 '
+style = "bg:#06969A"
+
+# Command duration settings
+[cmd_duration]
+min_time = 500
+
+# Battery settings
+[battery]
+full_symbol = ""
+charging_symbol = ""
+discharging_symbol = ""
+style = "bold green"
+
+# Time settings
+[time]
+disabled = false
+time_format = "%-I:%M %p"
+style = "bg:#33658A"
+format = '[$time ]($style)'
+
+# Jobs settings
+[jobs]
+symbol = " "
+threshold = 1
+
+# OS icons 
+[os.symbols]
+Alpaquita = " "
+Alpine = " "
+Amazon = " "
+Android = " "
+Arch = " "
+Artix = " "
+CentOS = " "
+Debian = " "
+DragonFly = " "
+Emscripten = " "
+EndeavourOS = " "
+Fedora = " "
+FreeBSD = " "
+Garuda = "󰛓 "
+Gentoo = " "
+HardenedBSD = "󰞌 "
+Illumos = "󰈸 "
+Linux = " "
+Mabox = " "
+Macos = " "
+Manjaro = " "
+Mariner = " "
+MidnightBSD = " "
+Mint = " "
+NetBSD = " "
+NixOS = " "
+OpenBSD = "󰈺 "
+openSUSE = " "
+OracleLinux = "󰌷 "
+Pop = " "
+Raspbian = " "
+Redhat = " "
+RedHatEnterprise = " "
+Redox = "󰀘 "
+Solus = "󰠳 "
+SUSE = " "
+Ubuntu = " "
+Unknown = " "
+Windows = "󰍲 "
